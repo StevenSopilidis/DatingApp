@@ -27,7 +27,7 @@ namespace API.Extensions
             string connectionString = null;
             string envVar = Environment.GetEnvironmentVariable("DATABASE_URL");
             if (string.IsNullOrEmpty(envVar)){
-                connectionString = Configuration["Connectionstrings:database"];
+                connectionString = config["Connectionstrings:database"];
             }
             else{
                 //parse database URL. Format is postgres://<username>:<password>@<host>/<dbname>
@@ -41,7 +41,7 @@ namespace API.Extensions
                 "; Port=" + uri.Port +
                 "; SSL Mode=Require; Trust Server Certificate=true;";
             }
-            services.AddDbContext<YourDataContext>(opt =>
+            services.AddDbContext<DataContext>(opt =>
                     opt.UseNpgsql(connectionString)
             );
             return services;
