@@ -24,7 +24,7 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {
-                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIROMENT");
 
                 string connStr;
 
@@ -50,7 +50,6 @@ namespace API.Extensions
                     var pgPass = pgUserPass.Split(":")[1];
                     var pgHost = pgHostPort.Split(":")[0];
                     var pgPort = pgHostPort.Split(":")[1];
-
                     connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}";
                 }
 
